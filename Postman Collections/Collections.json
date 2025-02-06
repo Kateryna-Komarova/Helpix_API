@@ -1,0 +1,3180 @@
+{
+	"info": {
+		"_postman_id": "59d8999f-8e0e-4cfd-af67-728af5d11353",
+		"name": "Helpix_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get my profile",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ecd0941-9a71-426b-8988-abba3141d09b",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Your message: User profile fetched successfully\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"User profile fetched successfully\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ede95659-7fe3-4e06-beba-4cd43b7608d0",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6b87138b-c7f2-4da9-9003-b203d7d2cb28",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/users/me"
+							},
+							"response": []
+						},
+						{
+							"name": "Get user profile by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "db905819-0496-45cd-a783-c31dae542ed3",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Your message: Successfully retrieved user profile\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Successfully retrieved user profile\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fe0227b5-2b20-4ea1-9955-68de7c01e969",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6bad68d1-3ee1-4804-b0c3-02e455aae999",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/users/3"
+							},
+							"response": []
+						},
+						{
+							"name": "Update language",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7d24bf18-d325-42bf-8214-adf8c6d586d6",
+										"exec": [
+											"",
+											"pm.test(\"Body contains expected success message\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Field 'language_code' updated successfully\");",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Field 'language_code' updated successfully\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Field 'language_code' updated successfully\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ff19b58e-6f36-42d5-ae56-9ef859a1beef",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "cac34d50-4779-46c1-a581-bfe2c9a46973",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?currencyCode=ENG",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "currencyCode",
+											"value": "ENG"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update country",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ca53fd8f-e635-468d-95dc-f3691c9330e8",
+										"exec": [
+											"",
+											"pm.test(\"Body contains expected success message\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Field 'country_code' updated successfully\");",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Field 'country_code' updated successfully\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Field 'country_code' updated successfully\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Response contains expected success message\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Field 'country_code' updated successfully\");",
+											"});",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "770b197d-c5dc-4589-ad8a-3c82723faa13",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "65a0186f-d165-4082-815e-05b98ac42b14",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?countryCode=DE",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "countryCode",
+											"value": "DE"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update currency",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "538614d5-84f1-49fc-b8da-1582dc6612c7",
+										"exec": [
+											"",
+											"pm.test(\"Body contains expected success message\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Field 'currency_code' updated successfully\");",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Field 'currency_code' updated successfully\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Field 'currency_code' updated successfully\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Response contains expected success message\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Field 'currency_code' updated successfully\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f3361254-0484-45c0-b32d-c13bc3522b93",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "af67b229-8344-43f2-8c74-dddee72d83c2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?currencyCode=EUR",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "currencyCode",
+											"value": "EUR"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "0f4eb2f6-27f6-4137-8284-d2fb8f907c79",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "95e35990-6f6d-42b8-b9bd-364fde2b3bcf",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a49a82f8-fb9a-4634-a470-4715773135cb",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 800ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(800);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Get my profile with invalid token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "187c24f7-9d47-4e3c-8379-e55f3db18152",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8e96fc3a-77ec-4e3d-b672-466893a8f962",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c7fce653-1d3a-4611-8ed6-090fbcb2a195",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessTok"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/users/me"
+							},
+							"response": []
+						},
+						{
+							"name": "Get user profile with wrong id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5d7dc4ab-28bf-4c39-92bb-6a5590c75c75",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: User not found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"User not found\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string Not Found\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4c87823f-9580-4a32-a7f2-d18301188108",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "410adc5b-d743-488b-a0e3-3947340271e7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/users/-3"
+							},
+							"response": []
+						},
+						{
+							"name": "Get user profile with wrong Token and valid id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5d7dc4ab-28bf-4c39-92bb-6a5590c75c75",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"",
+											"",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4c87823f-9580-4a32-a7f2-d18301188108",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "390798a3-d214-4ec0-a390-a71474cb06d8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCb2IgQ2FydwiZXhwIjoxNzM3ODIyMjc3LCJuYW1lIjoiQm9iIENhcnRlciIsImlkIjozfQ.-MwTluSP3-u7Tz9sKtYWVGH1WNWXFpAJwLKXDFDSdVU"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/users/2"
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid refresh Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bacb76a0-7ea9-4575-9a95-278c4e19debc",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Invalid refresh token\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid refresh token\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string Unauthorized\", function () {",
+											"    pm.response.to.have.status(\"Unauthorized\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1b44fcf8-10d4-4daf-acd4-dc54d5a3f3a4",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "5a1581a6-3fd9-48c6-9fb1-18b3a08bb353",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"refreshToken\" : \"hbGciOiJII1J9.eyJzdWIiOiJPbGVrc2FuZHIgRmlya28iLCJleHAiOjE3Mzc2NjE0MjEsIm5hbWUiOiJPbGVrc2FuZHIgRmlya28iLCJpZCI6MX0.ia4-_G0ezH7fU4QZAPWC75lMpPH0pS5RBTRvZAYnJTM\",\n\"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\",\n\"clientId\":\"client1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/users/auth/refresh"
+							},
+							"response": []
+						},
+						{
+							"name": "Update with invalid language code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "27253893-9905-42cf-93c2-8f804d8025aa",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string: Bad Request\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "667f9166-5d7f-49f8-9821-24cd89aeaca5",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "92f3e73c-930a-42c1-9a2e-5d412a422cb3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?currencyCode=ENGo",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "currencyCode",
+											"value": "ENGo"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update language  with invalid Access token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e069e6be-45b9-474b-ab3a-ef53a7a509ea",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6ed80b76-203d-4bf8-be57-87044a1b9779",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "9c9a58e5-13df-4d87-b5b0-5158cb1ce2f1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?currencyCode=ENG",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "currencyCode",
+											"value": "ENG"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update with invalid country code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f4d88016-565a-459a-8c76-575adc7f7630",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string: Bad Request\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "34bd7bf3-179a-424b-851d-bcce55bc1750",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "81919b6a-7cf4-436a-bf4e-f94936e9f322",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?countryCode=DEl",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "countryCode",
+											"value": "DEl"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update country with invalid Access token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bb5b6d02-2e20-4b73-8141-e5172eb2dfc7",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "556debb3-473c-4f26-8b4c-c602756ce968",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "408643a8-ce0a-4947-95d0-ace2905e709f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToke"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?countryCode=DE",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "countryCode",
+											"value": "DE"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update with invalid currency code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7fccd307-f188-4e6e-a50a-d2f4636d2e42",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Bad Request\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "662bd456-365a-4a14-9499-b247d8b485d3",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "2a1bd93e-272d-4ff3-8913-af577f45a0a8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?currencyCode=eru",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "currencyCode",
+											"value": "eru"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update currency with invalid  Access token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d6fe77c0-358a-4dd2-8938-3a5b6754c54f",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "bde3781e-d387-46a6-9535-480656fa0531",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "94b051bd-c19a-4ee5-afa9-fc6bdb191206",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/users/update?currencyCode=EUR",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"users",
+										"update"
+									],
+									"query": [
+										{
+											"key": "currencyCode",
+											"value": "EUR"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "029402d7-bf2c-461f-9f0c-1b5d7d3c7a58",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "986ccac9-5658-4c50-a523-cb1cd573f0a3",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "74c69b39-0b3e-4e08-bb5f-f7c0533ffeda",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Response time is less than 800ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(800);",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			],
+			"id": "70138b8e-962d-4b76-a321-6047ef010d3d"
+		},
+		{
+			"name": "Listing",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get listing by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "de891009-dc23-43c9-abd4-9cce6714c9e2",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4b38aa01-6159-4fdb-b6cc-f82776c38050",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "ce3bcca6-a28b-49b9-8229-6d1f50c8719f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/listings/14"
+							},
+							"response": []
+						},
+						{
+							"name": "Update listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5f7b856b-848c-46b7-90ba-71257346afd2",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "25d00c56-5b4d-43b9-9ca3-1aa9c1ae11b7",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a1a4f87c-10bc-468e-87da-6dd4d9e9a2a7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"categoryId\": 11,\n\"contactPhone\": \"+491115554433\",\n\"contactEmail\": \"kol@example.com\",\n\"translations\": [\n    {\n\"languageCode\": \"en\",\n\"title\": \"listing-test-33\",\n\"description\": \"This is a description of the listing\"\n}\n],\n\"images\": [\n    {\n\"imageUrl\": \"https://www.example.com/image110.jpg\",\n\"isPrimary\": true\n},\n{ \n\"imageUrl\": \"https://www.example.com/image120.jpg\",\n\"isPrimary\": false\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "deba3799-ecb0-41ce-9bc8-7ec8feff47f2",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "09fff700-f0cb-4535-a0a8-0f50c3734ed4",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "4913d14a-7e25-4912-85bc-da491c2b5897",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BaseURI}}/listings/20"
+							},
+							"response": []
+						},
+						{
+							"name": "Get active listings by category",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "249019f0-461e-4d20-8536-79036963d67b",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData)",
+											"postman.setEnvironmentVariable(\"nextPageToken\", jsonData.nextPageToken);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "2c9a5aa1-2b34-4da6-ba8e-38ecd7c7f439",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "a5f3d025-522a-4e69-bb0f-ae76813662e4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/listings?pageToken={{nextPageToken}}&limit=1&categoryId=2",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"listings"
+									],
+									"query": [
+										{
+											"key": "pageToken",
+											"value": "{{nextPageToken}}"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "categoryId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d6c7b52c-292c-4709-aec6-945e04fa234c",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c3f810c3-de7d-4f85-925f-70e929be75eb",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "f5e8c234-d59c-4d5e-a016-3ecd0d306113",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 2,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"de\",\n      \"title\": \"massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings"
+							},
+							"response": []
+						},
+						{
+							"name": "Extend listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d134deef-be60-4303-acbb-f5fe2c02f88e",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a466821c-3e29-428a-80c8-cf4a060c5759",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "b51d3aff-71f8-4073-ba19-708b73073955",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "{{BaseURI}}/listings/6/extend"
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "48eb5325-a955-478e-a34b-8f4abd7a9428",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3e4c0938-d4e0-456d-b93e-3401ec067eb5",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "41ef6a7e-20a2-4ee4-b3f6-a197f82d4825",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 1,\n  \"contactPhone\": \"+491115554433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"New York, USA\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 199.99,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 199.99,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Product Title\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/6/deactivate"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Listings of user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5925b919-2deb-4ab5-9aeb-e195cc6970df",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ee5c1d61-9c97-4c54-a2fd-2158c5c0c3aa",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "469ef1b1-1a3c-41ac-84c0-3708191107a2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 9007199254740991,\n  \"author\": {\n    \"username\": \"John Doe\",\n    \"createdAt\": \"2025-01-20T15:30:00\",\n    \"email\": \"johndoe@example.com\",\n    \"userId\": 12345,\n    \"pictureUrl\": \"https://example.com/image.jpg\"\n  },\n  \"slug\": \"string\",\n  \"translation\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Product Title\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ],\n  \"createdAt\": \"2025-01-17T15:30:00\",\n  \"updatedAt\": \"2025-01-17T15:30:00\",\n  \"active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/me"
+							},
+							"response": []
+						}
+					],
+					"id": "d2eb7308-38d3-41c5-b8d9-cd31e4b80e68",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "836b7d49-befa-4edb-8755-59a747a5fe5c",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8828acef-8a29-4203-92b9-01b093cdec94",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 800ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(800);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Get listing by wrong id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8bb0e5ea-1526-43c6-b9b4-3dc84db1e68d",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Listing not found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Listing not found\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string: Not Found\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6161ee18-6ffd-4bfe-bf30-0ca31875f680",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "9e242945-0325-4e9c-b7fe-8d7dd9a47fdb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/listings/16"
+							},
+							"response": []
+						},
+						{
+							"name": "Update listing with invalid id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d8649434-b27e-48d9-ba26-0352a32e7f03",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Listing not found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Listing not found\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string: Not Found\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "55e3692e-6b24-46fa-90a9-d21a3cebbcaf",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "8dcf7717-8a15-4336-aa17-0d819af77c93",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 2,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"eni\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/12"
+							},
+							"response": []
+						},
+						{
+							"name": "Update listing with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d8649434-b27e-48d9-ba26-0352a32e7f03",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "55e3692e-6b24-46fa-90a9-d21a3cebbcaf",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "2baf805c-ba9e-4433-95a3-75c358aa8b38",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 2,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"eni\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/5"
+							},
+							"response": []
+						},
+						{
+							"name": "Update listing with invalid categoryId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d8649434-b27e-48d9-ba26-0352a32e7f03",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "55e3692e-6b24-46fa-90a9-d21a3cebbcaf",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "397619b4-2673-4801-8601-252540960d84",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 10,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"eni\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/12"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete listing with invalid listing id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cd85e3b4-f0d4-4d9a-b87b-c8df107875e4",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Listing not found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Listing not found\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string: Not Found\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "12ba91dc-3b5b-4625-bf29-9957f7eac9d9",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "071477ba-660a-4601-a0fe-db212521d292",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BaseURI}}/listings/78"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete listing with invalid Accsess Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cd85e3b4-f0d4-4d9a-b87b-c8df107875e4",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: You can not delete this listing\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"You can not delete this listing\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "12ba91dc-3b5b-4625-bf29-9957f7eac9d9",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "e6cf8f4b-bf57-4356-9936-9e56e8b0055b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BaseURI}}/listings/8"
+							},
+							"response": []
+						},
+						{
+							"name": "Get active listings by wrong category",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ea344aad-2a38-42c3-bf92-4182dd60900d",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Category not found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Category not found\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Not found\", function () {",
+											"    pm.response.to.have.status(\"Not found\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e8b52e0c-3a8d-416f-86c6-ec65d3648081",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "374e4165-ba82-4503-92c0-1fae04307f3a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/listings?categoryId=4&limit=10",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"listings"
+									],
+									"query": [
+										{
+											"key": "categoryId",
+											"value": "4"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get active listings by category with invalid limit",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ea344aad-2a38-42c3-bf92-4182dd60900d",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Category not found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Category not found\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Not found\", function () {",
+											"    pm.response.to.have.status(\"Not found\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e8b52e0c-3a8d-416f-86c6-ec65d3648081",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "b1d52a2c-093e-4ff9-93a0-5647ebfa8e43",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/listings?categoryId=2&limit=0",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"listings"
+									],
+									"query": [
+										{
+											"key": "categoryId",
+											"value": "2"
+										},
+										{
+											"key": "limit",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create listing with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85312039-9d0f-4f1c-96a0-cbaefcc5b2f9",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "22e34d16-99bf-48b5-a3f2-61b30a0397d4",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "7c6d4faf-5dcc-4f1b-98f2-c0740c3157ad",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 2,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create listing with invalid categoryID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85312039-9d0f-4f1c-96a0-cbaefcc5b2f9",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "22e34d16-99bf-48b5-a3f2-61b30a0397d4",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "174833c0-4705-463c-aa81-8b2e17a5e364",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 6,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings"
+							},
+							"response": []
+						},
+						{
+							"name": "Create listing with invalid data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "85312039-9d0f-4f1c-96a0-cbaefcc5b2f9",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "22e34d16-99bf-48b5-a3f2-61b30a0397d4",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "81f6d97f-a496-4521-b81a-d4eecf187db1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 6,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings"
+							},
+							"response": []
+						},
+						{
+							"name": "Extend listing  with invalid Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fe1af3ec-39a8-45aa-9de0-428dbcde4e82",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Listing not found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Listing not found\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string: Not Found\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1a9e4c7c-0496-416b-b259-b51793e74777",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "510d22e0-95c4-4b46-84ca-52235665ad25",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "{{BaseURI}}/listings/10/extend"
+							},
+							"response": []
+						},
+						{
+							"name": "Extend listing  with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fe1af3ec-39a8-45aa-9de0-428dbcde4e82",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1a9e4c7c-0496-416b-b259-b51793e74777",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "56dbcf87-296c-45a4-906e-8d84dd934399",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "{{BaseURI}}/listings/10/extend"
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate listing with invalid id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "34421ff4-a61b-41f9-8b8b-3e26d8d45efd",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Body matches string: Listing not found\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Listing not found\");",
+											"});",
+											"",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code name has string: Not Found\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e2e3c4e8-ee40-4b97-904d-a9f395015d96",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "25731375-9b26-492b-a4e1-f0e493f5b6b9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 1,\n  \"contactPhone\": \"+491115554433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"New York, USA\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 199.99,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 199.99,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Product Title\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/45/deactivate"
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate listing with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "34421ff4-a61b-41f9-8b8b-3e26d8d45efd",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e2e3c4e8-ee40-4b97-904d-a9f395015d96",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "79b85488-4396-491b-8c85-ba1cfe7cc8c3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"categoryId\": 1,\n  \"contactPhone\": \"+491115554433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"New York, USA\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 199.99,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 199.99,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Product Title\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/12/deactivate"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Listings of user with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "90ec99b4-b2d2-4094-b32c-34fde85d7898",
+										"exec": [
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"     pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"pm.test(\"Body is correct\", function () {",
+											"    pm.response.to.have.body(\"Invalid token\");",
+											"}); ",
+											"",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid token\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "5c59072d-aac0-4779-957a-5891e448d5fc",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "850d6908-f495-493d-8905-5c5046e0523f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 9007199254740991,\n  \"author\": {\n    \"username\": \"John Doe\",\n    \"createdAt\": \"2025-01-20T15:30:00\",\n    \"email\": \"johndoe@example.com\",\n    \"userId\": 12345,\n    \"pictureUrl\": \"https://example.com/image.jpg\"\n  },\n  \"slug\": \"string\",\n  \"translation\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Product Title\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ],\n  \"createdAt\": \"2025-01-17T15:30:00\",\n  \"updatedAt\": \"2025-01-17T15:30:00\",\n  \"active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/listings/me"
+							},
+							"response": []
+						}
+					],
+					"id": "8bb4d513-a303-4754-aea4-7d6358e363ad",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9ad010e5-ff37-451a-8265-adb90850dcb1",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "24e09ad2-dedf-4af3-af43-72ef449039ab",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Response time is less than 800ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(800);",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			],
+			"id": "8334b11a-ac42-4872-b27a-75a57ac6462e",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b05ade75-1cc4-44dd-b329-5c7a78d2ff95",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8e006e9-47ad-461b-8110-5bf6de281047",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Create review",
+							"id": "9c4c1ca1-01b6-4837-8a31-d974d8c24897",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": 5,\n  \"comment\": \"Good product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/listings/14"
+							},
+							"response": []
+						},
+						{
+							"name": "Update review",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "60c86991-959c-4e8c-a239-8f15efbf57ce",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "74d4c85b-bb6b-4f61-85c6-ec879d827d57",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "0dcc3307-ea77-49a1-93ed-28adb4190cb1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": 2,\n  \"comment\": \"Great product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/3"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete review",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "40d6f18c-e9c6-444c-90ad-b7727152390a",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "afacc393-a609-473a-b417-235f5895213a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6fc84d60-8f7f-48ed-8e21-1e497dee13eb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BaseURI}}/reviews/3"
+							},
+							"response": []
+						},
+						{
+							"name": "Get listing reviews by listing id",
+							"id": "200b558d-e52a-460a-a480-a872a590bd01",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/reviews/listings/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Get my reviews",
+							"id": "d4069dd6-4d32-4bc9-8fa1-735b2f7e4080",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/reviews/users/me"
+							},
+							"response": []
+						}
+					],
+					"id": "fbed2d4f-8325-46cd-aff0-e39c1c95bec8",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "eb1e5f7c-35a3-41c2-a06b-4754326fd6f2",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "02e18a14-b913-450d-acd9-afbbb4e0af3e",
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 800ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(800);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Create Review with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8271ef6-dba3-486d-8d5e-501c8c2755d8",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8945c2b7-a155-443e-bd89-7d1d7600ee0d",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "9e371f71-fe39-4fc6-b093-603b6a9528c6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": 5,\n  \"comment\": \"Good product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/listings/10"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Review with invalid Id Listing",
+							"id": "cb3a1ca5-db9f-4827-a54e-63d66abfb9ca",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": 5,\n  \"comment\": \"Good product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/listings/25"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Review with Invalid Rating",
+							"id": "a265be83-f430-444c-9901-d1448537c2a4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": -25,\n  \"comment\": \"Good product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/listings/11"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Review with Invalid Comment",
+							"id": "67bb574b-7d58-4c6b-a28b-6ffa64f7e583",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": 5,\n  \"comment\": \"09876363\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/listings/11"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Review with invalid Id Review",
+							"id": "b5c516d5-d53b-417b-a708-da1aa884f139",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": -1,\n  \"comment\": \"Great product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/3"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Review with invalid Access Token",
+							"id": "33f0bc3a-06c1-44b7-9b4b-abe137e1429e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": -1,\n  \"comment\": \"Great product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/3"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Review with invalid review rating",
+							"id": "fd9e5ec6-5b47-4893-8ddb-af61b9ff1a11",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": -1,\n  \"comment\": \"Great product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/3"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Review with invalid Review Comment",
+							"id": "53511ddf-e309-46ac-b61b-ab07167c1e93",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"rating\": -1,\n  \"comment\": \"Great product!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BaseURI}}/reviews/3"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Review with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fc99dd9c-59f0-4d36-8b4a-95a1ed45792e",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "20d64fa5-c520-474b-a240-738f7b39a995",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "14bc40a1-50e9-4ba7-bdea-e617bd722a12",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BaseURI}}/reviews/89"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Review with invalid review id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d04f1615-f35c-49ba-851b-d1390a21af47",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"",
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string: Not Found\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "bf9d9503-103f-4e81-b21b-a6168704de6a",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "89d57082-ef81-4cc3-82eb-c386a03a452f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "{{BaseURI}}/reviews/89"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Reviews with invalid Listing id",
+							"id": "5993db5c-442f-4bc0-b3f3-78fc7e14087c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/reviews/listings/567"
+							},
+							"response": []
+						},
+						{
+							"name": "Get listing reviews with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bebb613f-afb3-4659-b12c-476b20103de0",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ade5a655-f2b8-4b20-ac0d-cffa05b585ef",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "8c5bb7e6-514f-4ff6-a61e-7dcdd38d8f32",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/reviews/listings/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Get my reviews with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "da498501-108a-4fe0-8c8f-1ce32ef4948c",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Status code name has string: Forbidden\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7d712db9-8aa9-41e2-9118-43fa99d05946",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "188744dd-f43d-4468-8936-287d2f09c94b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{BaseURI}}/reviews/users/me"
+							},
+							"response": []
+						}
+					],
+					"id": "2465d2cd-6e46-4917-a19b-a8351f046a61"
+				}
+			],
+			"id": "e6f340bd-0082-44b6-a7f3-e53a50ec6668"
+		}
+	]
+}
