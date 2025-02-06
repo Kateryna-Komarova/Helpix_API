@@ -2508,6 +2508,29 @@
 					"item": [
 						{
 							"name": "Create review",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cda64bdb-48a6-4739-b001-9129f866a913",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c3867583-9190-4d46-8ecf-c50bdcee6a91",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "9c4c1ca1-01b6-4837-8a31-d974d8c24897",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2530,7 +2553,7 @@
 										}
 									}
 								},
-								"url": "{{BaseURI}}/reviews/listings/14"
+								"url": "{{BaseURI}}/reviews/listings/18"
 							},
 							"response": []
 						},
@@ -2632,6 +2655,29 @@
 						},
 						{
 							"name": "Get listing reviews by listing id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cf50e491-a104-470c-aa1d-ab294594bd81",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a6f9dff1-b41f-4971-9a2f-3bf21ab8a57e",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "200b558d-e52a-460a-a480-a872a590bd01",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2651,6 +2697,29 @@
 						},
 						{
 							"name": "Get my reviews",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b65c75d8-b477-402c-9a6e-154d7ebda9f0",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a65d616c-adc2-456a-aaf3-7f9884f90c06",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "d4069dd6-4d32-4bc9-8fa1-735b2f7e4080",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
