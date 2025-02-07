@@ -1889,8 +1889,8 @@
 									"script": {
 										"id": "ea344aad-2a38-42c3-bf92-4182dd60900d",
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {",
-											"    pm.response.to.have.status(404);",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
 											"});",
 											"",
 											"pm.test(\"Body matches string: Category not found\", function () {",
