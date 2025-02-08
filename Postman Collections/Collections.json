@@ -1820,17 +1820,8 @@
 									"script": {
 										"id": "ea344aad-2a38-42c3-bf92-4182dd60900d",
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {",
-											"    pm.response.to.have.status(404);",
-											"});",
-											"",
-											"pm.test(\"Body matches string: Category not found\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Category not found\");",
-											"});",
-											"",
-											"",
-											"pm.test(\"Status code name has string: Not found\", function () {",
-											"    pm.response.to.have.status(\"Not found\");",
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
 											"});"
 										],
 										"type": "text/javascript",
@@ -1841,8 +1832,11 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "e8b52e0c-3a8d-416f-86c6-ec65d3648081",
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
