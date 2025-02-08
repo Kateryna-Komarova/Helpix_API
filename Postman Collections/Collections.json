@@ -2110,7 +2110,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"categoryId\": 6,\n  \"contactPhone\": \"+491114433\",\n  \"contactEmail\": \"contacxample.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
+									"raw": "{\n  \"categoryId\": 6,\n  \"contactPhone\": \"+491119894433\",\n  \"contactEmail\": \"contacx@ample.com\",\n  \"websiteUrl\": \"\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
 									"options": {
 										"raw": {
 											"language": "json"
