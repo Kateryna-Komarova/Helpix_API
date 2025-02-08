@@ -1140,6 +1140,15 @@
 									"script": {
 										"id": "09fff700-f0cb-4535-a0a8-0f50c3734ed4",
 										"exec": [
+											"pm.sendRequest(\"{{BaseURI}}/listings\", function (err, res) {",
+											"    if (!err && res.status === 200) {",
+											"        let listings = res.json(); // Преобразуем ответ в JSON",
+											"        if (listings.length > 0) {",
+											"            let randomListing = listings[Math.floor(Math.random() * listings.length)]; // Выбираем случайный листинг",
+											"            pm.environment.set(\"listing_id\", randomListing.id); // Сохраняем в переменную окружения",
+											"        }",
+											"    }",
+											"});",
 											""
 										],
 										"type": "text/javascript",
@@ -1160,7 +1169,7 @@
 								},
 								"method": "DELETE",
 								"header": [],
-								"url": "{{BaseURI}}/listings/20"
+								"url": "{{BaseURI}}/listings/{{listing_id}}"
 							},
 							"response": []
 						},
