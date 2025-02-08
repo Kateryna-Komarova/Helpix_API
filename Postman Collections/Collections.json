@@ -1140,21 +1140,8 @@
 									"script": {
 										"id": "09fff700-f0cb-4535-a0a8-0f50c3734ed4",
 										"exec": [
-											"pm.sendRequest(\"{{BaseURI}}/listings\", function (err, res) {",
-											"    if (!err && res.status === 200) {",
-											"        let listings = res.json();",
-											"        if (listings.length > 0) {",
-											"            let randomIndex = Math.floor(Math.random() * listings.length);",
-											"            let randomListing = listings[randomIndex]; // Випадковий листинг",
-											"            pm.environment.set(\"listing_id\", randomListing.id);",
-											"            console.log(\"Set random listing_id:\", randomListing.id);",
-											"        } else {",
-											"            console.log(\"No listings found!\");",
-											"        }",
-											"    } else {",
-											"        console.log(\"Error fetching listings:\", err);",
-											"    }",
-											"});",
+											"",
+											"",
 											"",
 											""
 										],
@@ -1176,7 +1163,7 @@
 								},
 								"method": "DELETE",
 								"header": [],
-								"url": "{{BaseURI}}/listings/{{listing_id}}"
+								"url": "{{BaseURI}}/listings/25"
 							},
 							"response": []
 						},
