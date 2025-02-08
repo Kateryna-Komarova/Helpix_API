@@ -2070,13 +2070,13 @@
 									"script": {
 										"id": "85312039-9d0f-4f1c-96a0-cbaefcc5b2f9",
 										"exec": [
-											"pm.test(\"Status code is 403\", function () {",
-											"    pm.response.to.have.status(403);",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
 											"});",
 											"",
 											"",
-											"pm.test(\"Status code name has string: Forbidden\", function () {",
-											"    pm.response.to.have.status(\"Forbidden\");",
+											"pm.test(\"Status code name has string: Bad Request\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
 											"});"
 										],
 										"type": "text/javascript",
@@ -2110,7 +2110,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"categoryId\": 6,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
+									"raw": "{\n  \"categoryId\": 6,\n  \"contactPhone\": \"+491114433\",\n  \"contactEmail\": \"contacxample.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"en\",\n      \"title\": \"Massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
 									"options": {
 										"raw": {
 											"language": "json"
