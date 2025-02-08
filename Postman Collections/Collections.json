@@ -1140,15 +1140,25 @@
 									"script": {
 										"id": "09fff700-f0cb-4535-a0a8-0f50c3734ed4",
 										"exec": [
+											"console.log(\"Trying to delete listing_id:\", pm.environment.get(\"listing_id\"));",
+											"",
+											"",
+											"",
 											"pm.sendRequest(\"{{BaseURI}}/listings\", function (err, res) {",
 											"    if (!err && res.status === 200) {",
-											"        let listings = res.json(); // Преобразуем ответ в JSON",
+											"        let listings = res.json();",
 											"        if (listings.length > 0) {",
-											"            let randomListing = listings[Math.floor(Math.random() * listings.length)]; // Выбираем случайный листинг",
-											"            pm.environment.set(\"listing_id\", randomListing.id); // Сохраняем в переменную окружения",
+											"            let firstListing = listings[0]; // Берем первый доступный листинг",
+											"            pm.environment.set(\"listing_id\", firstListing.id);",
+											"            console.log(\"Set listing_id:\", firstListing.id);",
+											"        } else {",
+											"            console.log(\"No listings found!\");",
 											"        }",
+											"    } else {",
+											"        console.log(\"Error fetching listings:\", err);",
 											"    }",
 											"});",
+											"",
 											""
 										],
 										"type": "text/javascript",
@@ -1169,7 +1179,7 @@
 								},
 								"method": "DELETE",
 								"header": [],
-								"url": "{{BaseURI}}/listings/{{listing_id}}"
+								"url": "{{BaseURI}}/listings/16"
 							},
 							"response": []
 						},
