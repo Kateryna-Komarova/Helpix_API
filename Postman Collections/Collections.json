@@ -1210,7 +1210,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{BaseURI}}/listings?pageToken={{nextPageToken}}&limit=1&categoryId=2",
+									"raw": "{{BaseURI}}/listings?&limit=2&categoryId=2",
 									"host": [
 										"{{BaseURI}}"
 									],
@@ -1219,12 +1219,12 @@
 									],
 									"query": [
 										{
-											"key": "pageToken",
-											"value": "{{nextPageToken}}"
+											"key": null,
+											"value": null
 										},
 										{
 											"key": "limit",
-											"value": "1"
+											"value": "2"
 										},
 										{
 											"key": "categoryId",
