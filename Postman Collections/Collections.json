@@ -2063,7 +2063,7 @@
 							"response": []
 						},
 						{
-							"name": "Create listing with invalid data",
+							"name": "Create listing with invalid websiteUrl",
 							"event": [
 								{
 									"listen": "test",
