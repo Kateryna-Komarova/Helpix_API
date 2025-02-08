@@ -1140,10 +1140,6 @@
 									"script": {
 										"id": "09fff700-f0cb-4535-a0a8-0f50c3734ed4",
 										"exec": [
-											"console.log(\"Trying to delete listing_id:\", pm.environment.get(\"listing_id\"));",
-											"",
-											"",
-											"",
 											"pm.sendRequest(\"{{BaseURI}}/listings\", function (err, res) {",
 											"    if (!err && res.status === 200) {",
 											"        let listings = res.json();",
@@ -1179,7 +1175,7 @@
 								},
 								"method": "DELETE",
 								"header": [],
-								"url": "{{BaseURI}}/listings/16"
+								"url": "{{BaseURI}}/listings/{{listing_id}}"
 							},
 							"response": []
 						},
