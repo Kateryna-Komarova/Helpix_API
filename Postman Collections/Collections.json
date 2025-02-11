@@ -1118,13 +1118,47 @@
 						},
 						{
 							"name": "Get listing for delete method",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "759524df-bf24-4b95-a0e6-50c40858154a",
+										"exec": [
+											"let listings = pm.response.json();",
+											"if (listings.length > 0) {",
+											"    pm.environment.set(\"listing_id\", listings[0].id);",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "5fea05bc-7fcc-4cff-8e29-f52d481f6a27",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "5af6e89d-c751-44a3-b72d-d11868db1c8e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{localAccessToken}}"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": "{{BaseURI}}/listings"
 							},
 							"response": []
 						},
