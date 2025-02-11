@@ -1,17 +1,39 @@
 name: Automated API tests using Postman CLI
-
 on: push
-
 jobs:
   automated-api-tests:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      
+      # Добавляем установку Node.js если требуется
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      # Установка зависимостей проекта
+      - name: Install dependencies
+        run: npm install
+        
+      # Запуск сервера в фоновом режиме
+      - name: Start server
+        run: |
+          npm start & # Замените на вашу команду запуска сервера
+          sleep 10 # Даем серверу время на запуск
+          
+      # Проверка что сервер запустился
+      - name: Check if server is running
+        run: |
+          curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:8081
+          
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/osx_64.sh" | sh
+          
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+        
       - name: Run API tests
         run: |
           postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9"
