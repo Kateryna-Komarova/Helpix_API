@@ -2848,6 +2848,29 @@
 						},
 						{
 							"name": "Create Review with invalid Id Listing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "61fd2f13-f143-45a6-aea6-e2a72070d9bc",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ad815bc0-df32-450c-9efa-20dedff63228",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "cb3a1ca5-db9f-4827-a54e-63d66abfb9ca",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2876,6 +2899,29 @@
 						},
 						{
 							"name": "Create Review with Invalid Rating",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4d40cc0b-7d30-46ef-8a8f-c8823fdb99c6",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b95a0024-c426-4466-858e-5dc835ce7df7",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "a265be83-f430-444c-9901-d1448537c2a4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2904,6 +2950,29 @@
 						},
 						{
 							"name": "Create Review with Invalid Comment",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d0dc7901-25a1-4877-9900-e3144914f9b3",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "02429d92-e009-4386-b378-78ff65c7bedd",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "67bb574b-7d58-4c6b-a28b-6ffa64f7e583",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2932,6 +3001,29 @@
 						},
 						{
 							"name": "Update Review with invalid Id Review",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e8d45729-96db-473f-a21c-c771af2e19ce",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b3c28545-bdd4-4070-b896-e8c5d2cb18a9",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "b5c516d5-d53b-417b-a708-da1aa884f139",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2960,6 +3052,29 @@
 						},
 						{
 							"name": "Update Review with invalid Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a44a6a2-8c35-4eda-b32a-c0f37967a626",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "cb0c7d43-8ae1-4ccb-b38d-7f7bd01979d7",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "33f0bc3a-06c1-44b7-9b4b-abe137e1429e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2988,6 +3103,29 @@
 						},
 						{
 							"name": "Update Review with invalid review rating",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "238f9bad-0011-4a5c-b54d-24646ed4fcc5",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "9cbecad6-707a-4e42-8f72-b8f9710b7504",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "fd9e5ec6-5b47-4893-8ddb-af61b9ff1a11",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -3016,6 +3154,29 @@
 						},
 						{
 							"name": "Update Review with invalid Review Comment",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "59b68775-0a16-4019-b398-2169496f20b4",
+										"exec": [
+											"pm.test(\"Content-Type is present\", function () {",
+											"    pm.response.to.have.header(\"Content-Type\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1c2af44d-0254-492c-94d8-cfe8b21abe34",
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "53511ddf-e309-46ac-b61b-ab07167c1e93",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
