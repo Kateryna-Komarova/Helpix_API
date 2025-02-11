@@ -416,7 +416,6 @@
 											"    pm.expect(pm.response.text()).to.include(\"User not found\");",
 											"});",
 											"",
-											"",
 											"pm.test(\"Content-Type is present\", function () {",
 											"    pm.response.to.have.header(\"Content-Type\");",
 											"});",
@@ -854,11 +853,9 @@
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"",
 											"pm.test(\"Content-Type is present\", function () {",
 											"    pm.response.to.have.header(\"Content-Type\");",
 											"});",
-											"",
 											"",
 											"pm.test(\"Status code name has string: Bad Request\", function () {",
 											"    pm.response.to.have.status(\"Bad Request\");",
@@ -1116,6 +1113,18 @@
 									}
 								},
 								"url": "{{BaseURI}}/listings/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Get listing for delete method",
+							"id": "5af6e89d-c751-44a3-b72d-d11868db1c8e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						},
