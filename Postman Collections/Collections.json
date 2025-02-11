@@ -1124,10 +1124,15 @@
 									"script": {
 										"id": "759524df-bf24-4b95-a0e6-50c40858154a",
 										"exec": [
-											"let listings = pm.response.json();",
-											"if (listings.length > 0) {",
-											"    pm.environment.set(\"listing_id\", listings[0].id);",
-											"}"
+											"let response = pm.response.json(); ",
+											"",
+											"if (response.data && response.data.length > 0) { ",
+											"    pm.environment.set(\"listing_id\", response.data[0].id); ",
+											"    console.log(\"Saved listing_id:\", response.data[0].id); ",
+											"} else { ",
+											"    console.log(\"No listings found in response.\");",
+											"}",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -1206,7 +1211,7 @@
 								},
 								"method": "DELETE",
 								"header": [],
-								"url": "{{BaseURI}}/listings/25"
+								"url": "{{BaseURI}}/listings/{{listing_id}}"
 							},
 							"response": []
 						},
