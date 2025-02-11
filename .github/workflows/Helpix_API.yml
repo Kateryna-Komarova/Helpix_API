@@ -1,49 +1,17 @@
 name: Automated API tests using Postman CLI
+
 on: push
+
 jobs:
   automated-api-tests:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      
-      # Установка Docker Compose V2
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose-plugin
-          docker compose version
-        
-      # Сборка и запуск контейнера
-      - name: Build and start container
-        run: |
-          docker compose up -d
-          sleep 30
-          
-      # Проверка что сервер запустился  
-      - name: Check if server is running
-        run: |
-          curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:8081
-          
       - name: Install Postman CLI
         run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-          
+          curl -o- "https://dl-cli.pstmn.io/install/osx_64.sh" | sh
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-        
       - name: Run API tests
         run: |
           postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9"
-        
-      # Остановка контейнера после тестов
-      - name: Stop container
-        if: always()
-        run: docker compose down
-      - name: Run API tests
-        run: |
-          postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9"
-        
-      # Остановка контейнера после тестов
-      - name: Stop container
-        if: always()
-        run: docker-compose down
