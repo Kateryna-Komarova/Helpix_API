@@ -6,7 +6,6 @@ jobs:
   automated-api-tests:
     runs-on: ubuntu-latest
     services:
-      # Добавляем сервис PostgreSQL напрямую
       postgres:
         image: postgres:latest
         env:
@@ -24,19 +23,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Проверка статуса PostgreSQL
       - name: Verify PostgreSQL connection
         run: |
           sudo apt-get install -y postgresql-client
           PGPASSWORD=postgres psql -h localhost -U postgres -d test_db -c '\l'
 
-      # Установка и запуск Postman CLI
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
           postman --version
 
-      # Запуск тестов с подробным выводом
       - name: Run API tests
         run: |
           postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" \
@@ -46,10 +42,10 @@ jobs:
           --suppress-exit-code \
           2>&1 | tee postman_output.log
 
-      # Публикация результатов тестов как артефакт
+      # Обновлено до v4
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: postman-test-results
           path: postman_output.log
