@@ -5,11 +5,24 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/osx_64.sh" | sh
+      
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run API tests
+      
+      - name: Debug Token (Check if it exists)
         run: |
-          postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9"
+          if [ -z "${{ secrets.ACCESS_TOKEN }}" ]; then
+            echo "❌ ERROR: ACCESS_TOKEN is empty or not set!"
+            exit 1
+          else
+            echo "✅ ACCESS_TOKEN is set."
+          fi
+      
+      - name: Run API tests with debug logs
+        run: |
+          postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" \
+          -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9" --verbose
