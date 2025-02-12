@@ -16,7 +16,8 @@ jobs:
 
       - name: Login to Postman CLI
         run: |
-          postman login --api-key ${{ secrets.POSTMAN_API_KEY }}
+          export POSTMAN_API_KEY=${{ secrets.POSTMAN_API_KEY }}
+          postman login
 
       - name: Run API tests
         run: |
