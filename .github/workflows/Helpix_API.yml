@@ -2,7 +2,7 @@ name: Automated API tests using Postman CLI
 on: push
 jobs:
   automated-api-tests:
-    runs-on: ubuntu-latest  # Переключаемся на ubuntu для лучшей поддержки Docker
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
@@ -17,33 +17,40 @@ jobs:
       - name: Build and start containers
         run: |
           docker compose up -d
+          docker compose ps
+          docker compose logs
           
-      # Ожидание запуска сервера
+      # Ожидание запуска сервера с подробным логированием
       - name: Wait for server
         run: |
           for i in {1..30}; do
-            if curl -s http://localhost:8081 > /dev/null; then
+            echo "Attempt $i: Checking server status..."
+            curl -v http://localhost:8081
+            if [ $? -eq 0 ]; then
               echo "Server is up!"
               exit 0
             fi
             echo "Waiting for server... ($i/30)"
+            docker compose logs
             sleep 2
           done
           echo "Server did not come up within 60 seconds"
+          docker compose logs
           exit 1
           
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+          postman --version
           
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
         
-      - name: Run API tests
+      - name: Run API tests with detailed output
         run: |
-          postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9"
+          postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9" --verbose
         
       # Остановка контейнеров после тестов
       - name: Stop containers
-        if: always()  # Выполняется даже если предыдущие шаги завершились с ошибкой
+        if: always()
         run: docker compose down
