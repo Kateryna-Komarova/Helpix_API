@@ -13,6 +13,9 @@ jobs:
       - name: Install Postman CLI
         run: npm install -g postman-cli
 
+      - name: Check Postman CLI installation
+        run: postman -v
+
       - name: Authenticate Postman CLI
         run: |
           export POSTMAN_API_KEY=${{ secrets.POSTMAN_API_KEY }}
@@ -21,4 +24,3 @@ jobs:
       - name: Run API tests
         run: |
           postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9"
-
