@@ -1,28 +1,29 @@
 name: Automated API tests using Postman CLI
-on: push
+
+on: 
+  push:
+
 jobs:
   automated-api-tests:
     runs-on: macos-latest
+
     steps:
-      - uses: actions/checkout@v4
-      
+      # Шаг: Установка Postman CLI
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/osx_64.sh" | sh
-      
+
+      # Шаг: Логин в Postman CLI с использованием POSTMAN_API_KEY
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      
-      - name: Debug Token (Check if it exists)
+
+      # Шаг: Запуск API тестов с использованием коллекции и окружения
+      - name: Run API tests
+        run: postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9"
+
+      # Пример: использование ACCESS_TOKEN в другом запросе или сценарии
+      - name: Use ACCESS_TOKEN in a request
         run: |
-          if [ -z "${{ secrets.ACCESS_TOKEN }}" ]; then
-            echo "❌ ERROR: ACCESS_TOKEN is empty or not set!"
-            exit 1
-          else
-            echo "✅ ACCESS_TOKEN is set."
-          fi
-      
-      - name: Run API tests with debug logs
-        run: |
-          postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" \
-          -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9" --verbose
+          echo "Using ACCESS_TOKEN for additional request"
+          curl -X GET "https://api.someendpoint.com/data" \
+          -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}"
