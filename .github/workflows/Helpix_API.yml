@@ -1,51 +1,15 @@
 name: Automated API tests using Postman CLI
 on: push
-env:
-  POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
 jobs:
   automated-api-tests:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_DB: test_db
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Verify PostgreSQL connection
-        run: |
-          sudo apt-get install -y postgresql-client
-          PGPASSWORD=postgres psql -h localhost -U postgres -d test_db -c '\l'
-
       - name: Install Postman CLI
         run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-          postman --version
-
+          curl -o- "https://dl-cli.pstmn.io/install/osx_64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run API tests
         run: |
-          postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" \
-          -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9" \
-          --verbose \
-          --bail \
-          --suppress-exit-code \
-          2>&1 | tee postman_output.log
-
-      # Обновлено до v4
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: postman-test-results
-          path: postman_output.log
+          postman collection run "14149783-59d8999f-8e0e-4cfd-af67-728af5d11353" -e "14149783-64297a7d-7072-4d30-af58-505ddfa96ee9"
