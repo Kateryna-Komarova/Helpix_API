@@ -1329,7 +1329,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"categoryId\": 2,\n  \"contactPhone\": \"+491110954433\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"de\",\n      \"title\": \"massage\",\n      \"description\": \"This is the product description.\",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
+									"raw": "{\n  \"categoryId\": 2,\n  \"contactPhone\": \"+4911109544\",\n  \"contactEmail\": \"contact@example.com\",\n  \"websiteUrl\": \"https://www.example.com\",\n  \"location\": \"Görlitz, Germany\",\n  \"mapLink\": \"https://goo.gl/maps/example\",\n  \"mapEmbedLink\": \"<iframe src='https://www.google.com/maps/embed?pb=example'/>\",\n  \"mapProvider\": \"Google\",\n  \"address\": \"123\",\n  \"price\": 50.00,\n  \"currencyCode\": \"USD\",\n  \"priceUsd\": 50.00,\n  \"paymentType\": 1,\n  \"translations\": [\n    {\n      \"languageCode\": \"de\",\n      \"title\": \"Cars\",\n      \"description\": \"Cars \",\n      \"default\": true\n    }\n  ],\n  \"images\": [\n    {\n      \"imageUrl\": \"https://example.com/image.jpg\",\n      \"isPrimary\": true\n    }\n  ]\n}\n\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2917,8 +2917,11 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "b95a0024-c426-4466-858e-5dc835ce7df7",
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -2944,7 +2947,7 @@
 										}
 									}
 								},
-								"url": "{{BaseURI}}/reviews/listings/15"
+								"url": "{{BaseURI}}/reviews/listings/25"
 							},
 							"response": []
 						},
